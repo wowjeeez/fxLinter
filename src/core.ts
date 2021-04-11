@@ -14,14 +14,12 @@ async function getFilePaths(dir: string, ignore: string[]): Promise<string[]> {
         result.push(f as string)
       }
     }
-    console.log("resolving")
     resolve(result)
   })
 }
 
 function analyzeFile(path: string): Promise<FileResult[]> {
   return new Promise<FileResult[]>((resolve, reject) => {
-    console.log("Analyzing file: ", path)
     const line_counter = ((i = 0) => () => ++i)();
     const readInterface = readline.createInterface(fs.createReadStream(path));
     const lineResults: Array<FileResult[] | null[]> = []
@@ -47,7 +45,6 @@ export async function analyze(dir: string, ignore: string[]): Promise<FileResult
       files.forEach(async (file: string, idx: number) => {
         result.push(await analyzeFile(file))
         if (idx == files.length - 1) {
-          console.log("ENDED ITER", result.flat())
           resolve(result.flat())
         }
       })
@@ -55,4 +52,4 @@ export async function analyze(dir: string, ignore: string[]): Promise<FileResult
   })
 }
 
-analyze("D:/prog/tests/esx_garage",  [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"]).then(res => console.log)
+analyze("D:/prog/tests/esx_garage",  [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"]).then(res => console.log(res))
