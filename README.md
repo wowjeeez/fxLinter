@@ -29,7 +29,7 @@ Array strucutre: <br>
 }, /* more results here*/]
 ```
 <br>
-To get a humanly readalbe text for the errors, you can use the `fxLinter:getLocale` event (server)
+To get a humanly readalbe text for the errors, you can use the `fxLinter:getLocale` event (server) <br>
 Args: <br>
 rule: `string` the rule name <br>
 locale: `string` the locale code (default is `en`) WIP
