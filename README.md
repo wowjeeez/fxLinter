@@ -16,7 +16,7 @@ The package you download from npm/yarn is the CLI build.
 fxLinter exposes a server event (`fxLinter:lint`), to lint any folder.<br>
 Args:<br>
 path: `string` The folder to lint <br>
-ignores: `string, string` Folders to ignore (such as node_modules, .git etc)<br>
+ignores: `string, string` Folders, files, names to ignore (such as node_modules, .git etc)<br>
 callback: an array containing all the linting results.<br>
 Array strucutre: <br>
 ```ts
