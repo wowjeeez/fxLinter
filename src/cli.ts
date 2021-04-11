@@ -28,7 +28,7 @@ inquirer.prompt([{
     //TODO! parse results correctly
     result.forEach((res: FileResult) => {
       console.log(chalk[res.level == "error" ? "red" : "yellow"](getLocale(res.rule)))
-      console.log(`${chalk.white(`[${res.file.replace("\\", "/")}]:${res.line}`)} ${chalk.cyan(res.lineTxt.replace(/\s/g, ' '))}`)
+      console.log(`${chalk.white.underline(`${res.file.replace("\\/g", "/")}:${res.line}`)} ${chalk.cyan(res.lineTxt.replace(/\s/g, ' '))}`)
       console.log("\n\n")
     })
 })
