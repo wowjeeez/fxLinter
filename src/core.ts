@@ -4,6 +4,7 @@ import { getFiles } from "./iterator";
 import { isSubInArray } from "./common";
 import { FileResult } from "./typings";
 import { checkLine } from "./rules";
+import { resolve } from "node:path";
 
 async function getFilePaths(dir: string, ignore: string[]): Promise<string[]> {
   const result: string[] = []
@@ -39,17 +40,19 @@ function analyzeFile(path: string): Promise<FileResult[]> {
 
 
 
-export async function analyze(dir: string, ignore: string[]) {
-  getFilePaths(dir, ignore).then((files: string[]) => {
-    const result: FileResult[][] = []
-    files.forEach(async (file: string, idx: number) => {
-      result.push(await analyzeFile(file))
-      if (idx == files.length - 1) {
-        console.log("ENDED ITER", result.flat())
-  
-      }
+export async function analyze(dir: string, ignore: string[]): Promise<FileResult[]>  {
+  return new Promise<FileResult[]>((resolve, reject) => {
+    getFilePaths(dir, ignore).then((files: string[]) => {
+      const result: FileResult[][] = []
+      files.forEach(async (file: string, idx: number) => {
+        result.push(await analyzeFile(file))
+        if (idx == files.length - 1) {
+          console.log("ENDED ITER", result.flat())
+          resolve(result.flat())
+        }
+      })
     })
   })
 }
 
-analyze("D:/prog/tests/esx_garage",  [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"])
+analyze("D:/prog/tests/esx_garage",  [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"]).then(res => console.log)
