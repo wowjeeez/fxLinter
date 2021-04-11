@@ -4,3 +4,5 @@ export interface FileResult {
   file: string,
   level: "warn" | "error" | "off"
 }
+
+export type Runtime = "lua" | "js" | "c#" | "none"

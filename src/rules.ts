@@ -1,6 +1,7 @@
 // you can define your own rules here
 import { FileResult } from "./typings";
 import rules from "./plugins";
+import { getRuntime } from "./common";
 let inComment = false
 export function checkLine(line: string, idx: number, file: string): Array<FileResult | null> {
   const res: Array<FileResult | null> = []
@@ -13,7 +14,7 @@ export function checkLine(line: string, idx: number, file: string): Array<FileRe
     }
 
     if (!line.startsWith("--") && !line.startsWith("//") && !inComment) { // check if line is commented
-      res.push(v(line, idx, file))
+      res.push(v(line, idx, file, getRuntime(file)))
     } else {
       res.push(null)
     }

@@ -1,3 +1,5 @@
+import { Runtime } from "./typings";
+
 export function isSubInArray(arr: string[], text: string): boolean {
   let val = false //if I didnt utilize this var it always returned false idk why im dumb
   arr.forEach((elem: string) => {
@@ -18,5 +20,14 @@ export function parseIgnores(text: string): string[] {
     } else {
       return [""]
     }
+  }
+}
+
+export function getRuntime(file: string): Runtime {
+  const runtime = file.match(/[^\.]*$/)
+  if (runtime) {
+    return runtime.toString() as Runtime
+  } else {
+    return "none"
   }
 }

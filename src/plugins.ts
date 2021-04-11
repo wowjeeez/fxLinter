@@ -1,6 +1,6 @@
 import { FileResult } from "./typings";
 
-const rules = new Map<string, ((line: string, idx: number, file: string) => FileResult | null)>()
+const rules = new Map<string, ((line: string, idx: number, file: string, runtime: string) => FileResult | null)>()
 
 rules.set("vector-math-only", (line: string, idx: number, file: string): FileResult | null => {
   if (line.includes("GetDistanceBetweenCoords")) {
@@ -16,15 +16,15 @@ rules.set("favor-keybindings", (line: string, idx: number, file: string): FileRe
   return null
 })
 
-rules.set("no-object-calls", (line: string, idx: number, file: string): FileResult | null => {
-  if (line.includes("Citizen.Wait") || line.includes("Citizen.CreateThread") || line.includes("Citizen.SetTimeout")) {
+rules.set("no-object-calls", (line: string, idx: number, file: string, runtime: string): FileResult | null => {
+  if (line.includes("Citizen.Wait") || line.includes("Citizen.CreateThread") || line.includes("Citizen.SetTimeout") && runtime == "lua") {
     return {line: idx, file, rule: "no-object-calls", level: "error"}
   }
   return null
 })
 
-rules.set("no-RegisterServerEvent", (line: string, idx: number, file: string): FileResult | null => {
-  if (line.includes("RegisterServerEvent")) {
+rules.set("no-RegisterServerEvent", (line: string, idx: number, file: string, runtime: string): FileResult | null => {
+  if (line.includes("RegisterServerEvent") && runtime == "lua") {
     return {line: idx, file, rule: "no-RegisterServerEvent", level: "error"}
   }
   return null
@@ -47,7 +47,7 @@ rules.set("no-get-player-ped-for-local", (line: string, idx: number, file: strin
 })
 
 rules.set("no-get-player-ped", (line: string, idx: number, file: string): FileResult | null => {
-  if (line.includes("GetPlayerPed(")) {
+  if (line.includes("GetPlayerPed")) {
     return {line: idx, file, rule: "no-get-player-ped", level: "warn"}
   }
   return null
