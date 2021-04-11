@@ -4,7 +4,7 @@ import { getFiles } from "./iterator";
 import { isSubInArray } from "./common";
 import { FileResult } from "./typings";
 import { checkLine } from "./rules";
-import { resolve } from "node:path";
+import chalk from "chalk";
 
 async function getFilePaths(dir: string, ignore: string[]): Promise<string[]> {
   const result: string[] = []
@@ -51,10 +51,13 @@ export async function analyze(dir: string, ignore: string[]): Promise<FileResult
     })
   })
 }
-
+//TEST:
 analyze("D:/prog/tests/esx_garage", [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"]).then(res => console.log(res))
-
-onNet("fxLinter:lint", async (path: string, ignore: string[], cb: (res: FileResult[]) => void) => {
-  const res = await analyze(path, ignore)
-  cb(res)
-})
+try {
+  onNet("fxLinter:lint", async (path: string, ignore: string[], cb: (res: FileResult[]) => void) => {
+    const res = await analyze(path, ignore)
+    cb(res)
+  })
+} catch (err) {
+  console.log(chalk.yellow("CLI build detected"))
+}
