@@ -1,4 +1,4 @@
-{
+export const en = {
     "vector-math-only": "To improve performance, use vector math instead of the native solutions (on JS and C# use a wrapper, such as fivem-js)",
     "favor-keybindings": "Instead of listening for keypresses in a while loop, use RegisterKeyMapping",
     "no-object-calls": "To make your code more readable, remove the Citizen. prefix from certain functions (Wait, CreateThread, SetTimeout)",
