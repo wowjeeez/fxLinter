@@ -53,4 +53,11 @@ rules.set("no-get-player-ped", (line: string, idx: number, file: string): FileRe
   return null
 })
 
+rules.set("use-fxmanifest", (line: string, idx: number, file: string) => {
+  if (file.includes("__resource.lua")) {
+    return {line: idx, file, rule: "use-fxmanifest", level: "error"}
+  }
+  return null
+})
+
 export default rules
