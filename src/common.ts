@@ -7,3 +7,16 @@ export function isSubInArray(arr: string[], text: string): boolean {
 })
 return val
 }
+
+export function parseIgnores(text: string): string[] {
+  if (text.includes(",")) {
+    const stage = text.replace(/\s/g, '').split(",")
+    return stage
+  } else {
+    if (text.length > 0) {
+      return [text]
+    } else {
+      return [""]
+    }
+  }
+}

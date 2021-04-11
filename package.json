@@ -1,17 +1,18 @@
 {
-    "name": "ts",
+    "name": "fxLinter",
     "version": "1.0.0",
-    "main": "index.js",
-    "author": "shit",
+    "main": "cliBuild/src/server.js",
+    "author": "wowjesus",
     "license": "MIT",
     "scripts": {
         "build-fivem": "eslint . --ext .ts && webpack --color --progress",
         "watch": "eslint . --ext .ts && webpack --mode development --watch",
         "build-cli": "eslint . --ext .ts && tsc",
-        "test": "node dist/cliBuild/server.js"
+        "test": "node cliBuild/server.js",
+        "cli": "node cliBuild/cli.js"
     },
     "bin": {
-        "fxLinter": "node dist/cliBuild/cli.js"
+        "fxLinter": "./cliBuild/cli.js"
     },
     "dependencies": {
         "@typescript-eslint/eslint-plugin": "^4.21.0",
