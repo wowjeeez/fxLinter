@@ -1,10 +1,11 @@
 import fs from "fs";
 import readline from "readline";
 import { getFiles } from "./iterator";
-import { isSubInArray } from "./common";
+import { isSubInArray, getLocale } from "./common";
 import { FileResult } from "./typings";
 import { checkLine } from "./rules";
 import chalk from "chalk";
+import { locale } from "yargs";
 
 async function getFilePaths(dir: string, ignore: string[]): Promise<string[]> {
   const result: string[] = []
@@ -57,6 +58,9 @@ try {
   onNet("fxLinter:lint", async (path: string, ignore: string[], cb: (res: FileResult[]) => void) => {
     const res = await analyze(path, ignore)
     cb(res)
+  })
+  onNet("fxLinter:getLocale", (rule: string, locale: string, cb: (res: string) => void) => {
+    cb(getLocale(rule, locale))
   })
 } catch (err) {
   console.log(chalk.yellow("CLI build detected"))

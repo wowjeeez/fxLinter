@@ -1,7 +1,7 @@
 {
     "name": "fxLinter",
     "version": "1.0.0",
-    "main": "cliBuild/src/server.js",
+    "main": "cliBuild/src/core.js",
     "author": "wowjesus",
     "license": "MIT",
     "scripts": {
@@ -14,6 +14,7 @@
     "bin": {
         "fxLinter": "./cliBuild/cli.js"
     },
+    "types": "cliBuild/core.d.ts",
     "dependencies": {
         "@typescript-eslint/eslint-plugin": "^4.21.0",
         "@typescript-eslint/parser": "^4.21.0",
