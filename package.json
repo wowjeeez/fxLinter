@@ -1,6 +1,6 @@
 {
     "name": "fxlinter",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "main": "cliBuild/src/core.js",
     "author": "wowjesus",
     "license": "MIT",
@@ -16,6 +16,7 @@
     },
     "types": "cliBuild/core.d.ts",
     "dependencies": {
+        "@types/node": "^14.14.37",
         "@typescript-eslint/eslint-plugin": "^4.21.0",
         "@typescript-eslint/parser": "^4.21.0",
         "chalk": "^4.1.0",
@@ -27,7 +28,6 @@
         "@citizenfx/client": "^2.0.3764-1",
         "@citizenfx/server": "^2.0.3811-1",
         "@types/inquirer": "^7.3.1",
-        "@types/node": "^14.14.37",
         "@types/yargs": "^16.0.1",
         "remove-files-webpack-plugin": "^1.4.4",
         "ts-loader": "^8.0.17",
