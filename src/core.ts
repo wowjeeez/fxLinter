@@ -36,13 +36,20 @@ function analyzeFile(path: string): Promise<FileResult[]> {
     })
   })
 }
-getFilePaths("D:/prog/tests/esx_garage", [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"]).then((files: string[]) => {
-  const result: FileResult[][] = []
-  files.forEach(async (file: string, idx: number) => {
-    result.push(await analyzeFile(file))
-    if (idx == files.length - 1) {
-      console.log("ENDED ITER", result.flat())
 
-    }
+
+
+export async function analyze(dir: string, ignore: string[]) {
+  getFilePaths(dir, ignore).then((files: string[]) => {
+    const result: FileResult[][] = []
+    files.forEach(async (file: string, idx: number) => {
+      result.push(await analyzeFile(file))
+      if (idx == files.length - 1) {
+        console.log("ENDED ITER", result.flat())
+  
+      }
+    })
   })
-})
+}
+
+analyze("D:/prog/tests/esx_garage",  [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"])
