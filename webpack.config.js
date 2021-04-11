@@ -5,7 +5,7 @@ const RemovePlugin = require("remove-files-webpack-plugin");
 const buildPath = path.resolve(__dirname, "dist");
 
 const server = {
-    entry: "./server/core.ts",
+    entry: "./src/core.ts",
     module: {
         rules: [{
             test: /\.ts$/,
@@ -17,10 +17,10 @@ const server = {
         new webpack.DefinePlugin({ "global.GENTLY": false }),
         new RemovePlugin({
             before: {
-                include: [path.resolve(buildPath, "server")],
+                include: [path.resolve(buildPath, "src")],
             },
             watch: {
-                include: [path.resolve(buildPath, "server")],
+                include: [path.resolve(buildPath, "src")],
             },
         }),
     ],
@@ -32,7 +32,7 @@ const server = {
     },
     output: {
         filename: "server.js",
-        path: path.resolve(buildPath, "server"),
+        path: path.resolve(buildPath, "src"),
     },
     target: "node",
 };

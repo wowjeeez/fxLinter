@@ -7,7 +7,7 @@
     "scripts": {
         "build": "eslint . --ext .ts && webpack --color --progress",
         "watch": "eslint . --ext .ts && webpack --mode development --watch",
-        "start": "node dist/server/server.js"
+        "start": "node dist/src/server.js"
     },
     "dependencies": {
         "@citizenfx/client": "^2.0.3764-1",
