@@ -22,4 +22,5 @@ inquirer.prompt([{
     const ignores = parseIgnores(answers["ignores"])
     console.log(chalk.yellow("Linting files..."))
     const result = await analyze(path, ignores)
+    //TODO! parse results correctly
 })
