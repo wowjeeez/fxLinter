@@ -9,7 +9,7 @@ The package you download from npm/yarn is the CLI build.
 1. Clone this repository
 2. Inside that folder run `yarn` 
 3. After you installad all the dependencies, run `yarn build-fivem` 
-4. Start the resource using `start fxLinter`
+4. Start the resource using `start fxlinter`
 
 # API
 
