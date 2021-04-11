@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es2017",
+        "noImplicitAny": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "lib": ["es2019"],
+        "strict": true,
+        "types": ["@citizenfx/server", "@types/node"],
+        "outDir": "cliBuild",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

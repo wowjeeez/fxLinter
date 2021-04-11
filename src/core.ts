@@ -26,7 +26,7 @@ function analyzeFile(path: string): Promise<FileResult[]> {
     readInterface.on('line', function (line, lineno = line_counter()) {
       const res = checkLine(line, lineno, path).filter((el) => el != null && el != undefined)
       if (res) {
-        lineResults.push(res);
+        lineResults.push(res as unknown as FileResult[]);
       }
     });
     readInterface.on("close", () => {
