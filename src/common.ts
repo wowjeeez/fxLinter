@@ -2,7 +2,7 @@ import { Runtime } from "./typings";
 import fs from "fs"
 type keyedObject = { [key: string]: string }
 
-const en: keyedObject = JSON.parse(fs.readFileSync(`${process.cwd()}/locales/en.json`).toString()) // temporary solution
+const en: keyedObject = JSON.parse(fs.readFileSync(`${__dirname}/locales/en.json`).toString()) // temporary solution
 const locales = new Map<string, keyedObject>()
 
 locales.set("en", en)
