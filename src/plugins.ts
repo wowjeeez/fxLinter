@@ -39,4 +39,18 @@ rules.set("limit-in-sql-calls", (line: string, idx: number, file: string): FileR
   return null
 })
 
+rules.set("no-get-player-ped-for-local", (line: string, idx: number, file: string): FileResult | null => {
+  if (line.includes("GetPlayerPed(-1)") || line.includes("GetPlayerPed(PlayerId())")) {
+    return {line: idx, file, rule: "no-get-player-ped-for-local", level: "error"}
+  }
+  return null
+})
+
+rules.set("no-get-player-ped", (line: string, idx: number, file: string): FileResult | null => {
+  if (line.includes("GetPlayerPed(")) {
+    return {line: idx, file, rule: "no-get-player-ped", level: "warn"}
+  }
+  return null
+})
+
 export default rules
