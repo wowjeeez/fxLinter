@@ -1,5 +1,5 @@
 {
-    "name": "fxLinter",
+    "name": "fxlinter",
     "version": "1.0.0",
     "main": "cliBuild/src/core.js",
     "author": "wowjesus",
