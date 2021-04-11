@@ -1,6 +1,7 @@
 export interface FileResult {
   rule: string,
   line: number,
+  lineTxt: string,
   file: string,
   level: "warn" | "error" | "off"
 }

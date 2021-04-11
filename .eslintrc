@@ -11,6 +11,7 @@
     ],
     "rules": {
         "no-async-promise-executor": 0,
-        "no-useless-escape": 0
+        "no-useless-escape": 0,
+        "@typescript/eslint-ban-ts-comment": 0
     }
   }

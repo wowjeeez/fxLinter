@@ -52,7 +52,7 @@ export async function analyze(dir: string, ignore: string[]): Promise<FileResult
   })
 }
 //TEST:
-analyze("D:/prog/tests/esx_garage", [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"]).then(res => console.log(res))
+//analyze("D:/prog/tests/esx_garage", [".git", "locales", "config.lua", "fxmanifest.lua", ".md", ".sql"]).then(res => console.log(res))
 try {
   onNet("fxLinter:lint", async (path: string, ignore: string[], cb: (res: FileResult[]) => void) => {
     const res = await analyze(path, ignore)

@@ -1,4 +1,11 @@
 import { Runtime } from "./typings";
+import fs from "fs"
+type keyedObject = { [key: string]: string }
+
+const en: keyedObject = JSON.parse(fs.readFileSync(`${process.cwd()}/locales/en.json`).toString()) // temporary solution
+const locales = new Map<string, keyedObject>()
+
+locales.set("en", en)
 
 export function isSubInArray(arr: string[], text: string): boolean {
   let val = false //if I didnt utilize this var it always returned false idk why im dumb
@@ -29,5 +36,13 @@ export function getRuntime(file: string): Runtime {
     return runtime.toString() as Runtime
   } else {
     return "none"
+  }
+}
+
+export function getLocale(rule: string, locale = "en"): string {
+  if (locales.has(locale)) {
+    return (locales as any).get(locale)[rule]
+  } else {
+    return "NO LOCALE FOUND"
   }
 }
