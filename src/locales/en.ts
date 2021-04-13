@@ -7,5 +7,5 @@ export const en = {
     "no-get-player-ped-for-local": "Instead of GetPlayerPed(-1) and other obsolete solutions use PlayerPedId() to get the local ped, it's faster",
     "no-get-player-ped": "Are you sure that you need that GetPlayerPed there?",
     "use-fxmanifest": "Use fxmanifest.lua instead of __resource.lua",
-    "src": "Use local src = source instead of redefining source, it has better readability"
+    "src": "Use local src = source instead of _source, it has better readability"
 }
