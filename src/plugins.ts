@@ -59,5 +59,11 @@ rules.set("use-fxmanifest", (line: string, idx: number, file: string) => {
   }
   return null
 })
+rules.set("src", (line: string, idx: number, file: string) => {
+  if (line.match(new RegExp("local\s*source\s*=\s*source"))) {
+    return {line: idx, file, rule: "src", lineTxt: line, level: "warn"}
+  }
+  return
+})
 
 export default rules
